@@ -31,20 +31,27 @@ public class UITest {
 	// Assert.assertEquals(driver.getTitle(), "Most Reliable App & Cross Browser Testing Platform | BrowserStack");
 	// driver.quit();
 		
-		WebDriverManager.edgedriver().setup(); // NO system.setProperty
+	  
+		// Disable Selenium Manager auto-downloads
+        System.setProperty("SE_DISABLE_DRIVER_DOWNLOAD", "true");
+
+        // Point to the pre-downloaded EdgeDriver
+        System.setProperty("webdriver.edge.driver", "C:\\edgedriver_win64\\msedgedriver.exe");
 
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
+        // For modern Edge, "--headless=new" is preferred; fallback to "--headless" if needed
+        options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage");
 
-        WebDriver driver = new EdgeDriver(options);
-
+        driver = new EdgeDriver(options);
         driver.get("https://www.browserstack.com/");
-        Assert.assertEquals(driver.getTitle(),
+        String title = driver.getTitle();
+        System.out.println("Title is: " + title);
+
+        Assert.assertEquals(title,
                 "Most Reliable App & Cross Browser Testing Platform | BrowserStack");
 
         driver.quit();
+
 
 	}
 
