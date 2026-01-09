@@ -22,14 +22,30 @@ public class UITest {
 
 	@Test
 	public void verifyTitle() {
-	//WebDriverManager.chromedriver().setup();
-	ChromeOptions options=new ChromeOptions();
-	options.addArguments("headless");
-	driver=new ChromeDriver(options);
-	driver.get("https://www.browserstack.com/");
-	System.out.println("Title is: " +driver.getTitle());
-	Assert.assertEquals(driver.getTitle(), "Most Reliable App & Cross Browser Testing Platform | BrowserStack");
-	driver.quit();
+	// //WebDriverManager.chromedriver().setup();
+	// ChromeOptions options=new ChromeOptions();
+	// options.addArguments("headless");
+	// driver=new ChromeDriver(options);
+	// driver.get("https://www.browserstack.com/");
+	// System.out.println("Title is: " +driver.getTitle());
+	// Assert.assertEquals(driver.getTitle(), "Most Reliable App & Cross Browser Testing Platform | BrowserStack");
+	// driver.quit();
+		
+		WebDriverManager.edgedriver().setup(); // NO system.setProperty
+
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+
+        WebDriver driver = new EdgeDriver(options);
+
+        driver.get("https://www.browserstack.com/");
+        Assert.assertEquals(driver.getTitle(),
+                "Most Reliable App & Cross Browser Testing Platform | BrowserStack");
+
+        driver.quit();
+
 	}
 
 }
