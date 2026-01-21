@@ -24,7 +24,15 @@ public class UITest {
 		System.out.println("hello!!!!!!");
 	}
 
+	@Test
+	public void myTest() {
+	    // 1. Create an instance of the other class
+	    Helper help = new Helper();
 	
+	    // 2. Call the method
+	    help.printHello();
+	    
+	}
 
 	@Test
 	public void verifyTitle() {
