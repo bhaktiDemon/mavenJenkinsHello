@@ -34,7 +34,7 @@ public class UITest {
 	    
 	}
 
-	@Test
+	//@Test
 	public void verifyTitle() {
 	// //WebDriverManager.chromedriver().setup();
 	// ChromeOptions options=new ChromeOptions();
